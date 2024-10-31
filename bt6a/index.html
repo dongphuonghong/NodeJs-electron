@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button id="btn" accesskey="a">Action</button>
+    <button id="btnExit" accesskey="e">Exit </button>
+<button id="btnFile" accesskey="f"> File</button>
+<script>
+        const{ipcRenderer}=require('electron')    
+    var btnAction =document.getElementById("btnAction");
+    var btnExit = document.getElementById("btnExit");
+    var btnFile = document.getElementById("btnFile");
+    ipcRenderer.on('welcome',(event, argument) => {
+        console.log('hello' +argument);
+    })
+btn.addEventListener('click',()=>{
+        ipcRenderer.send('Start','office.com');
+    })
+    btnExit.addEventListener('click',()=>{
+        ipcRenderer.send('Stop', 'exit');
+    })
+    btnFile.addEventListener('click',()=>{
+        ipcRenderer.send('chontaptin', 'file');
+    })
+    </script>
+   </body>
+</html>

@@ -1,0 +1,51 @@
+.cover-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    }
+    div.song-progress-container {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-gap: 10px;
+    }
+    progress.amplitude-song-played-progress {
+    width: 100%;
+    }
+    .song-info-container {
+    text-align: center;
+    }
+    .controls > div {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: inline-block;
+    }
+    .controls .amplitude-play-pause {
+    width: 74px;
+    height: 74px;
+    cursor: pointer;
+    display: inline-block;
+    }
+    .controls .amplitude-play-pause.amplitude-paused {
+    background-size: cover;
+    }
+    .controls .amplitude-play-pause.amplitude-playing {
+    background-size: cover;
+    }
+    .controls .amplitude-stop {
+    Page 38 of 39
+    background-size: cover;
+    }
+    .controls .amplitude-mute {
+    background-size: cover;
+    }
+    .controls .amplitude-mute.amplitude-muted {
+    background-size: cover;
+    }
+    .controls .amplitude-volume-up {
+    background-size: cover;
+    }
+    .controls .amplitude-volume-down {
+    background-size: cover;
+    }

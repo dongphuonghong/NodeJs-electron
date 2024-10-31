@@ -1,0 +1,86 @@
+// Import necessary modules from Electron
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+
+// Declare a variable for the main window
+let win;
+
+// Function to create the main window
+function createWindow() {
+    win = new BrowserWindow({
+        width: 300,
+        height: 300,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
+    });
+
+    // Load the HTML file into the window
+    win.loadFile('index.html');
+
+    // Send a welcome message to the main window
+    win.webContents.send('welcome', 'CDCNTT');
+}
+
+// Event listener for when the Electron app is ready
+app.on('ready', createWindow);
+
+// Event listener for IPC messages with the channel 'iloveyou'
+ipcMain.on('iloveyou', (event, argument) => {
+    console.log('Hello ', argument);
+});
+
+// Event listener for IPC messages with the channel 'tambietnhe'
+ipcMain.on('tambietnhe', (event, argument) => {
+    // Show an error dialog with the specified message
+    dialog.showErrorBox('Lầm lỗi', argument);
+    
+    // Exit the Electron app
+    app.exit();
+});
+
+// Event listener for IPC messages with the channel 'chontaptin'
+ipcMain.on('chontaptin', (event, argument) => {
+    // Show a dialog to choose a file or directory
+    dialog.showOpenDialogSync(win, {
+        properties: ['openFile', 'openDirectory']
+    });
+});
+
+// HTML content
+// Note: The provided HTML has a typo in the 'id' attribute of 'btnExit' (extra space)
+// It should be corrected to 'btnExit' instead of 'btn Exit'
+
+// HTML content with script
+const htmlContent = `
+    <h1 style="color:orange">
+        Hello, world
+    </h1>
+    <button id="btn"> Action </button>
+    <button id="btnExit"> Exit </button>
+    <button id="btnFile"> File </button>
+    <script>
+        const { ipcRenderer } = require('electron');
+        var mybtn = document.getElementById('btn');
+        var mybtnExit = document.getElementById('btnExit');
+        var mybtnFile = document.getElementById('btnFile');
+
+        // Event listener for IPC messages with the channel 'welcome'
+        ipcRenderer.on('welcome', (event, argument) => {
+            console.log('Chào mừng ' + argument);
+        });
+
+        // Event listener for the 'click' event on the 'Action' button
+        mybtn.addEventListener('click', () => {
+            ipcRenderer.send('iloveyou', 'itc.edu.vn');
+        });
+        // Event listener for the 'click' event on the 'Exit' button
+        mybtnExit.addEventListener('click', () => {
+            ipcRenderer.send('tambietnhe', 'Định mệnh!');
+        });
+
+        // Event listener for the 'click' event on the 'File' button
+        mybtnFile.addEventListener('click', () => {
+            ipcRenderer.send('chontaptin');
+        });
+    </script>

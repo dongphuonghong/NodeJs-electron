@@ -1,0 +1,24 @@
+main.js
+main.js
+var { app, dialog, BrowserWindow } = require('electron')
+function xuly() {
+  var win = new BrowserWindow({
+    webPreferences: { nodeIntegration: true, contextIsolation: false }
+  })
+  win.loadFile('./index.html')
+  dialog.showOpenDialog(win, {
+    title: 'Chọn hình game',
+    buttonLabel: 'Chọn'
+  })
+  .then(ketqua => win.webContents.send('garena', ketqua.filePaths))
+  .catch(_ => console.log('loi lam'))
+}
+app.on('ready', xuly)
+html
+<script>
+    var {ipcRenderer}=require('electron')
+    function xuly(e, dulieu) {
+      document.write(`<img src='${dulieu}' width='100px' />`)
+    }
+    ipcRenderer.on('garena',xuly)
+  </script>

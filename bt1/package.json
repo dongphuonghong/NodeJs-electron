@@ -1,0 +1,11 @@
+{
+  "name": "bt1",
+  "version": "1.0.0",
+  "description": "app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC"
+}

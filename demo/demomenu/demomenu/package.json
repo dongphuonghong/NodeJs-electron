@@ -1,0 +1,29 @@
+{
+  "name": "demomenu",
+  "version": "1.0.0",
+  "description": " app menu",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:windows": "electron-builder --win --dir",
+    "dist:windows": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "app",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.0.1",
+    "electron-builder": "^24.12.0"
+  },
+  "build": {
+    "icon": "menu.jpg",
+    "productName": "menu",
+    "nsis": {
+      "artifactName": "menu.setup.${version}.${ext}",
+      "uninstallDisplayName": "menu",
+      "oneClick": false,
+"allowToChangeInstallationDirectory": true      
+},
+    "copyright": "Copyright © year ${author}"
+  }
+}

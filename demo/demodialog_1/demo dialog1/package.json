@@ -1,0 +1,19 @@
+{
+  "name": "demodialog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.1.1",
+    "selected": "^1.0.0"
+  }
+}

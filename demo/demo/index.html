@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="hienthi()">click</button>
+    <script>
+        function hienthi(){
+         var{ipcRenderer}=require('electron')            
+             ipcRenderer.send('print-hello', 'John Doe')
+         document.write('hello')
+        }
+    </script>
+</body>
+</html>

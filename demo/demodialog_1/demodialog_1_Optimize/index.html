@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display App</title>
+</head>
+<body>
+    <!-- Container to display images -->
+    <p id="images"></p>
+    <script>
+        const { ipcRenderer } = require('electron');
+        // Event: IPC message from main process
+        ipcRenderer.on('data', (event, result) => {
+            // Get the images container element
+            const imagesContainer = document.getElementById('images');
+            // Append image elements to the container
+            result.forEach(imageSrc => {
+                const imgElement = document.createElement('img');
+                imgElement.src = imageSrc;
+                imgElement.alt = 'niem tin da mat';
+                imgElement.width = '100px';
+                imgElement.height = '600px';
+                imagesContainer.appendChild(imgElement);
+            });
+        });
+    </script>
+</body>
+</html>
